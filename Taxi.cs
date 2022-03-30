@@ -6,30 +6,37 @@ using System.Threading.Tasks;
 
 namespace TugasClassdanObject
 {
-    public class Taxi
+    internal class Taxi
     {
-        // properties
         public string DriverName { get; set; }
         public bool OnDuty { get; set; }
-        public float NumPassenger { get; set; }
+        public int NumPassanger { get; set; }
 
-        // method
         public void TaxiInfo()
         {
-            Console.WriteLine("Driver Name : {0}", DriverName);
-            Console.WriteLine("On Duty : {0}", OnDuty);
-            Console.WriteLine("Number of Passenger : {0} \n", NumPassenger);
-
+            Console.WriteLine($"Driver name = {DriverName}");
         }
 
-        public void PickUpPassenger()
+        public void PickUpPassanger()
         {
-            Console.WriteLine("{0} sedang menjemput penumpang", DriverName);
+            if (OnDuty == true)
+            {
+                Console.WriteLine($"On Duty = Yes");
+                Console.WriteLine($"Number Of Pasanger = {NumPassanger}");
+            }
+            else
+            {
+                Console.WriteLine($"On Duty = No");
+                Console.WriteLine($"{DriverName} tidak sedang menjamput penumpang");
+            }
         }
 
-        public void DropOffPassenger()
+        public void DropOffPassanger()
         {
-            Console.WriteLine("{0} selesai mengantar penumpang \n", DriverName);
+            if (NumPassanger != 0)
+            {
+                Console.WriteLine($"{DriverName} sedang mengantar penumpang");
+            }
         }
 
     }

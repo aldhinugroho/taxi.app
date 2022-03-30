@@ -6,22 +6,38 @@ using System.Threading.Tasks;
 
 namespace TugasClassdanObject
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
             // membuat objek taxi
             Taxi taxi = new Taxi();
 
-            // pengesetan nilai properties
-            taxi.DriverName = "jono";
-            taxi.OnDuty = true;
-            taxi.NumPassenger = 10;
+            Console.WriteLine("--- DATA DRIVER TAXI ---");
+            Console.WriteLine();
 
-            // pemanggilan method
-            taxi.TaxiInfo();
-            taxi.PickUpPassenger();
-            taxi.DropOffPassenger();
+            Console.Write("Nama Driver :  ");
+            taxi.DriverName = Console.ReadLine();
+
+            Console.Write("On Duty [Yes or No] :  ");
+            taxi.OnDuty = Console.ReadLine().ToLower() == "yes" ? true : false;
+
+            if (taxi.OnDuty)
+            {
+                Console.Write("Number of Passanger:  ");
+                taxi.NumPassanger = Convert.ToInt32(Console.ReadLine());
+
+                Console.WriteLine();
+                taxi.TaxiInfo();
+                taxi.PickUpPassanger();
+                taxi.DropOffPassanger();
+            }
+            else
+            {
+                Console.WriteLine();
+                taxi.TaxiInfo();
+                taxi.PickUpPassanger();
+            }
 
             Console.ReadKey();
 
